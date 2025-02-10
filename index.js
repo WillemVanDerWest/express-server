@@ -49,10 +49,10 @@ async function handleIpApiCall() {
     });
 }
 
-cron.schedule('* * */1 * * * *', () => {
+cron.schedule('0 0 */1 * * *', () => {
     const time = new Date()
     const timeNow= `${time.getHours()}:${time.getMinutes()}:${`${time.getSeconds()}`.length === 1 ? `0${time.getSeconds()}`:time.getSeconds() }`
-    console.log(timeNow, ` Running a task every minute`)
+    console.log(timeNow, ` Running a task every second hour`)
 
     handleIpApiCall().then((res) => {
         updateDomainName(res);
